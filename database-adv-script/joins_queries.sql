@@ -23,10 +23,7 @@ SELECT
   r.created_at AS review_date
 FROM
   properties p
-LEFT JOIN
-  reviews r
-ON
-  p.property_id = r.property_id;
+LEFT JOIN reviews r ON p.property_id = r.property_id;
 
 
 -- FULL OUTER JOIN: View all users and bookings even if they don’t match
