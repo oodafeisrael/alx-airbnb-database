@@ -57,3 +57,20 @@ FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
 LEFT JOIN payments pay ON pay.booking_id = b.booking_id;
+
+
+-- REFRACTORED: Use only necessary columns and indexed fields
+SELECT
+    b.booking_id,
+    b.start_date,
+    b.end_date,
+    b.total_price,
+    u.first_name || ' ' || u.last_name AS customer_name,
+    p.name AS property_name,
+    pay.amount
+FROM bookings b
+JOIN users u ON b.user_id = u.user_id
+JOIN properties p ON b.property_id = p.property_id
+LEFT JOIN payments pay ON pay.booking_id = b.booking_id
+ORDER BY b.created_at DESC;
+
